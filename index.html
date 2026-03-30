@@ -12,11 +12,10 @@
 
     <nav class="navbar navbar-dark sticky-top py-3">
         <div class="container d-flex align-items-center justify-content-between">
-            
             <span class="navbar-brand brand-logo mb-0">
                 <span class="logo-smart">SMART</span><span class="logo-guard">GUARD</span>
             </span>
-
+            
             <div class="threat-ticker d-none d-lg-flex align-items-center justify-content-center flex-grow-1 px-4">
                 <div class="ticker-item">
                     <span class="ticker-label">INTRUSIONS:</span>
@@ -27,15 +26,19 @@
                     <span class="ticker-value" id="count-assaults">8,941</span>
                 </div>
                 <div class="ticker-item">
-                    <span class="ticker-label">CRITICAL:</span>
-                    <span class="ticker-value text-danger" id="count-critical">1,204</span>
+                    <span class="ticker-label">SHOOTINGS:</span>
+                    <span class="ticker-value text-danger" id="count-critical">656</span>
                 </div>
             </div>
 
-            <a href="#waitlist" class="btn btn-custom btn-sm text-nowrap">Get Early Access</a>
+            <div class="d-flex gap-2">
+                <a href="#demo-section" class="btn btn-outline-terminal btn-sm text-nowrap" style="font-family: 'JetBrains Mono', monospace;">Interactive Demo</a>
+                <a href="#waitlist" class="btn btn-custom btn-sm text-nowrap">Get Early Access</a>
+            </div>
             
         </div>
     </nav>
+
 
     <section class="hero-section text-center container">
         <div class="row justify-content-center">
@@ -53,11 +56,76 @@
                     </div>
                     <div id="terminal-output" class="mt-3 mono-text" style="font-size: 0.8rem;"></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <section id="features-section" class="py-5 container hidden-section">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3 class="h5 fw-bold mb-3">Acoustic Mapping</h3>
+                    <p class="text-muted" style="font-size: 0.95rem;">Our AI models identify the exact floorboard, window, or door where a sound originated, giving you precise directional awareness in the dark.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3 class="h5 fw-bold mb-3">Frequency Kill-Switch</h3>
+                    <p class="text-muted" style="font-size: 0.95rem;">Instantly neutralizes high-decibel peaks like flashbangs, breaking glass, or alarms to prevent disorientation and protect your hearing.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3 class="h5 fw-bold mb-3">Passive Amplification</h3>
+                    <p class="text-muted" style="font-size: 0.95rem;">Whispers and footsteps are isolated and amplified, while background white noise (AC units, wind) is aggressively filtered out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="demo-section" class="py-5 border-top border-dark" style="background-color: #0c0c0e;">
+        <div class="container text-center py-4">
+            <p class="mono-text mb-2 text-terminal">> TACTICAL ACOUSTIC DEMONSTRATION</p>
+            <h2 class="display-6 fw-bold mb-5">See what you've been missing.</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <div class="border border-secondary rounded p-3 bg-dark shadow-lg mb-4" style="position: relative;">
+                        <div class="position-absolute top-0 end-0 m-4 z-3 bg-dark p-2 rounded border border-secondary">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label mono-text text-white me-5" id="demo-mode-label" for="demoToggle">System: OFF</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="demoToggle">
+                            </div>
+                        </div>
+
+                        <canvas id="floorPlanCanvas" width="800" height="400" style="width: 100%; height: auto; background-color: #000; border-radius: 4px;"></canvas>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center text-start">
+                        <button id="btn-trigger-lock" class="btn btn-outline-danger mono-text px-4 py-2">TRIGGER: Lock Picking</button>
+                        
+                        <div id="demo-terminal" class="mono-text p-3 border border-dark rounded" style="background: #000; width: 60%; font-size: 0.85rem; color: #a1a1aa;">
+                            > SYSTEM STANDBY. Awaiting input.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="data-modal" class="custom-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3 id="modal-title" class="mono-text text-terminal mb-4">> DATA UPLINK ESTABLISHED</h3>
+            <canvas id="threatChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js?v=2"></script>
+    <script src="demo.js"></script>
 </body>
 </html>
