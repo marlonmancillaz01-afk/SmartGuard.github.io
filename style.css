@@ -1,8 +1,15 @@
+/* Force crisp font rendering across all browsers */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 /* Core Theme Colors */
 :root {
     --bg-dark: #09090b;
     --text-main: #f8fafc;
-    --text-muted: #a1a1aa; /* Slightly lighter grey for better readability */
+    --text-muted: #ffffff; /* Slightly lighter grey for better readability */
     --accent-border: #27272a;
     --terminal-green: #4ade80;
     --logo-grey: #d1d5db;
@@ -30,15 +37,28 @@ body {
     font-weight: 600;
 }
 
-.logo-smart { color: var(--logo-grey); }
-.logo-guard { color: var(--logo-yellow); }
-
-/* New Custom Logo Styling */
+/* Container for the whole logo */
 .brand-logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.6rem !important; /* Forces Bootstrap to step aside */
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.1); 
+    display: flex;
+    align-items: center; /* Keeps both fonts vertically centered with each other */
+    line-height: 1;
+}
+
+.logo-smart {
+    font-family: 'Mrs Saint Delafield', cursive;
+    color: #ffffff;
+    font-size: 3.5rem; 
+    font-weight: 400; /* <--- This is critical. Do not let Bootstrap make it bold. */
+    margin-right: 4px; 
+    transform: translateY(-4px); 
+}
+
+.logo-guard {
+    font-family: 'Teko', sans-serif; 
+    color: #20c92b; 
+    font-size: 2.2rem;
+    font-weight: 500; /* Try 500 or 600 here. 700 might be too thick. */
+    letter-spacing: 1px;
 }
 
 .lead-custom {
